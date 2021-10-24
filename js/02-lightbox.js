@@ -3,10 +3,10 @@ import { galleryItems } from './gallery-items.js';
 
 console.log(galleryItems);
 
-const gallery = document.querySelector('.gallery');
-const imageMarkup = addImagesMarkup(galleryItems);
+const galleryEl = document.querySelector('.gallery'); // Поиск элементов
+const imageMarkup = addImagesMarkup(galleryItems); // переменная для разметки
 
-gallery.insertAdjacentHTML('beforeend', imageMarkup);
+galleryEl.insertAdjacentHTML('beforeend', imageMarkup);
 
 function addImagesMarkup(galleryItems) {
   return galleryItems
@@ -22,7 +22,8 @@ function addImagesMarkup(galleryItems) {
     .join('');
 }
 
-// const lightbox = new SimpleLightbox('.gallery a');
-// lightbox.on('show.simplelightbox', function (event) {
-//   // do something…
-// });
+const gallery = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+  captionPosition: 'bottom',
+});
